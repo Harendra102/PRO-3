@@ -1,8 +1,6 @@
-FROM centos:latest
+FROM almalinux:8
 
-RUN sed -i 's/mirrorlist/#mirrorlist/g' /etc/yum.repos.d/CentOS-* && \
-    sed -i 's|#baseurl=http://mirror.centos.org|baseurl=http://vault.centos.org|g' /etc/yum.repos.d/CentOS-* && \
-    yum install -y httpd vim wget zip unzip && \
+RUN yum install -y httpd vim wget zip unzip && \
     yum clean all
 
 RUN wget -O /var/www/html/neogym.zip https://www.free-css.com/assets/files/free-css-templates/download/page296/neogym.zip
