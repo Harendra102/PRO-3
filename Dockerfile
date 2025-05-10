@@ -6,7 +6,7 @@ RUN yum install -y httpd vim wget zip unzip && \
 RUN wget -O /var/www/html/neogym.zip https://www.free-css.com/assets/files/free-css-templates/download/page296/neogym.zip
 
 WORKDIR /var/www/html/
-CMD touch sunn
+CMD touch sunnn
 
 RUN unzip neogym.zip && \
     cp -rf neogym-html/* . && \
