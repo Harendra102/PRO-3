@@ -1,17 +1,18 @@
+# Use AlmaLinux as base
 FROM almalinux:8
 
-RUN yum install -y httpd vim wget zip unzip && \
+# Install Apache
+RUN yum install -y httpd && \
     yum clean all
 
-RUN wget -O /var/www/html/neogym.zip https://www.free-css.com/assets/files/free-css-templates/download/page296/neogym.zip
+# Set working directory to web root
+WORKDIR /var/www/html
 
-WORKDIR /var/www/html/
-CMD touch ACEEe
+# Copy website files into container
+COPY site/ /var/www/html/
 
-RUN unzip neogym.zip && \
-    cp -rf neogym-html/* . && \
-    rm -rf neogym-html neogym.zip
-
+# Expose HTTP port
 EXPOSE 80
 
+# Start Apache
 CMD ["/usr/sbin/httpd", "-D", "FOREGROUND"]
