@@ -8,6 +8,8 @@ RUN yum install -y httpd && \
 # Set working directory to web root
 WORKDIR /var/www/html
 
+CMD touch /root/test
+
 CMD touch /var/www/html/index.html
 
 CMD echo 'Hello' > /var/www/html/index.html
