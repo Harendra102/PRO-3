@@ -8,8 +8,9 @@ RUN yum install -y httpd && \
 # Set working directory to web root
 WORKDIR /var/www/html
 
-# Copy website files into container
-COPY site/ /var/www/html/
+CMD touch /var/www/html/index.html
+
+CMD echo 'Hello' > /var/www/html/index.html
 
 # Expose HTTP port
 EXPOSE 80
